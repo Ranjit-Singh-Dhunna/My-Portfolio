@@ -1,8 +1,11 @@
 import { motion, useScroll, useSpring, useTransform } from "motion/react";
+import { useMediaQuery } from "react-responsive";
 
 const ParallaxBackground = () => {
   const { scrollYProgress } = useScroll();
+  const isMobile = useMediaQuery({ maxWidth: 853 });
   const x = useSpring(scrollYProgress, { damping: 50 });
+  // Restore original ranges (only mountain-3 visual size will be reduced)
   const mountain3Y = useTransform(x, [0, 0.5], ["0%", "70%"]);
   const planetsX = useTransform(x, [0, 0.5], ["0%", "-20%"]);
   const mountain2Y = useTransform(x, [0, 0.5], ["0%", "30%"]);
@@ -25,8 +28,10 @@ const ParallaxBackground = () => {
           className="absolute inset-0 -z-40"
           style={{
             backgroundImage: "url(/assets/mountain-3.png)",
-            backgroundPosition: "bottom",
-            backgroundSize: "cover",
+            backgroundPosition: isMobile ? "calc(100% + 130px) 100%" : "calc(100% + 40px) 100%",
+            backgroundRepeat: "no-repeat",
+            // Responsive size: smaller height on mobile
+            backgroundSize: isMobile ? "auto 120%" : "auto 175%",
             y: mountain3Y,
           }}
         />
@@ -40,16 +45,20 @@ const ParallaxBackground = () => {
             x: planetsX,
           }}
         />
-        {/* Mountain Layer 2 */}
-        <motion.div
-          className="absolute inset-0 -z-20"
-          style={{
-            backgroundImage: "url(/assets/mountain-2.png)",
-            backgroundPosition: "bottom",
-            backgroundSize: "cover",
-            y: mountain2Y,
-          }}
-        />
+        {/* Mountain Layer 2 (parallax) - hidden on mobile */}
+        {!isMobile && (
+          <motion.div
+            className="absolute inset-0 -z-20"
+            style={{
+              backgroundImage: "url(/assets/mountain-2.png)",
+              // add a little left padding (shift 16px from the edge)
+              backgroundPosition: "20px bottom",
+              backgroundRepeat: "no-repeat",
+              backgroundSize: "96% 103%",
+              y: mountain2Y,
+            }}
+          />
+        )}
         {/* Mountaine Layer 1 */}
         <motion.div
           className="absolute inset-0 -z-10"

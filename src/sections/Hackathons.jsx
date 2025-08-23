@@ -5,7 +5,7 @@ import { hackathons } from "../constants";
 const Hackathons = () => {
   return (
     <div className="w-full">
-      <Timeline data={hackathons} title="Hackathons" />
+      <Timeline data={hackathons} title="Hackathons" footerText="more coming soon..." />
     </div>
   );
 };

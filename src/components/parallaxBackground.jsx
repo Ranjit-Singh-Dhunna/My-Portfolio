@@ -25,18 +25,22 @@ const ParallaxBackground = () => {
             filter: isMobile ? undefined : "saturate(0.85) brightness(0.95)",
           }}
         />
-        {/* Mountain Layer 3 */}
-        <motion.div
-          className="absolute inset-0 -z-40"
-          style={{
-            backgroundImage: "url(/assets/mountain-3.png)",
-            backgroundPosition: isMobile ? "calc(100% + 130px) 100%" : "calc(100% + 40px) 100%",
-            backgroundRepeat: "no-repeat",
-            // Responsive size: smaller height on mobile
-            backgroundSize: isMobile ? "auto 120%" : "auto 175%",
-            y: mountain3Y,
-          }}
-        />
+        {/* Mountain Layer 3 (parallax + faster ease-out slide-up) */}
+        <motion.div className="absolute inset-0 -z-40" style={{ y: mountain3Y }}>
+          <motion.div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: "url(/assets/mountain-3.png)",
+              backgroundPosition: isMobile ? "calc(100% + 130px) 100%" : "calc(100% + 40px) 100%",
+              backgroundRepeat: "no-repeat",
+              // Responsive size: smaller height on mobile
+              backgroundSize: isMobile ? "auto 120%" : "auto 175%",
+            }}
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: "easeOut", delay: 0.05 }}
+          />
+        </motion.div>
         {/* Planets */}
         <motion.div
           className="absolute inset-0 -z-30"
@@ -50,18 +54,27 @@ const ParallaxBackground = () => {
         {/* Mountain Layer 2 (parallax + gentle float) - hidden on mobile */}
         {!isMobile && (
           <motion.div className="absolute inset-0 -z-20" style={{ y: mountain2Y }}>
+            {/* entry animation wrapper (slower spring with slight x offset, slightly more delayed) */}
             <motion.div
+              initial={{ opacity: 0, y: 60, x: -20 }}
+              animate={{ opacity: 1, y: 0, x: 0 }}
+              transition={{ type: "spring", stiffness: 70, damping: 22, delay: 0.5 }}
               className="absolute inset-0"
-              style={{
-                backgroundImage: "url(/assets/mountain-2.png)",
-                // add a little left padding (shift 16px from the edge)
-                backgroundPosition: "20px bottom",
-                backgroundRepeat: "no-repeat",
-                backgroundSize: "96% 103%",
-              }}
-              animate={{ y: [0, -12, 0] }}
-              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-            />
+            >
+              {/* floating layer */}
+              <motion.div
+                className="absolute inset-0"
+                style={{
+                  backgroundImage: "url(/assets/mountain-2.png)",
+                  // add a little left padding (shift 16px from the edge)
+                  backgroundPosition: "20px bottom",
+                  backgroundRepeat: "no-repeat",
+                  backgroundSize: "96% 103%",
+                }}
+                animate={{ y: [0, -12, 0] }}
+                transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+              />
+            </motion.div>
           </motion.div>
         )}
         {/* Mountaine Layer 1 */}

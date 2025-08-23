@@ -2,7 +2,7 @@
 import { useScroll, useTransform, motion } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
 
-export const Timeline = ({ data, title = "Experience" }) => {
+export const Timeline = ({ data, title = "Experience", footerText }) => {
   const ref = useRef(null);
   const containerRef = useRef(null);
   const [height, setHeight] = useState(0);
@@ -21,6 +21,9 @@ export const Timeline = ({ data, title = "Experience" }) => {
 
   const heightTransform = useTransform(scrollYProgress, [0, 1], [0, height]);
   const opacityTransform = useTransform(scrollYProgress, [0, 0.1], [0, 1]);
+  // Footer appears near the end of the timeline
+  const footerOpacity = useTransform(scrollYProgress, [0.95, 1], [0, 1]);
+  const footerX = useTransform(scrollYProgress, [0.95, 1], [12, 0]);
 
   return (
     <div className="c-space section-spacing" ref={containerRef}>
@@ -69,6 +72,42 @@ export const Timeline = ({ data, title = "Experience" }) => {
             className="absolute inset-x-0 top-0  w-[2px] bg-gradient-to-t from-purple-500 via-lavender/50 to-transparent from-[0%] via-[10%] rounded-full"
           />
         </div>
+        {footerText && (
+          <motion.div
+            style={{ top: heightTransform, opacity: footerOpacity, x: footerX }}
+            className="hidden md:block absolute -translate-y-1/2 z-10 left-auto right-4 md:left-8 md:right-auto"
+          >
+            <div
+              className="px-4 py-1.5 rounded-lg border-2 border-purple-500/50 shadow-[0_0_14px_rgba(168,85,247,0.22)]"
+              style={{
+                backdropFilter: "blur(8px)",
+                WebkitBackdropFilter: "blur(8px)",
+                background:
+                  "linear-gradient(to bottom, rgba(3,4,18,0.55), rgba(3,4,18,0.25))",
+              }}
+            >
+              <span className="text-neutral-400 text-xs md:text-sm font-medium whitespace-nowrap">{footerText}</span>
+            </div>
+          </motion.div>
+        )}
+        {footerText && (
+          <motion.div
+            className="md:hidden pl-20 pr-4 mt-6"
+            style={{ opacity: footerOpacity, x: footerX }}
+          >
+            <div
+              className="inline-block px-4 py-1.5 rounded-lg border-2 border-purple-500/50 shadow-[0_0_14px_rgba(168,85,247,0.22)]"
+              style={{
+                backdropFilter: "blur(8px)",
+                WebkitBackdropFilter: "blur(8px)",
+                background:
+                  "linear-gradient(to bottom, rgba(3,4,18,0.55), rgba(3,4,18,0.25))",
+              }}
+            >
+              <span className="text-neutral-400 text-xs font-medium whitespace-nowrap">{footerText}</span>
+            </div>
+          </motion.div>
+        )}
       </div>
     </div>
   );

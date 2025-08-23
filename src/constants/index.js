@@ -226,6 +226,16 @@ export const myProjects = [
 // Hackathons timeline data (same structure as `experiences`)
 export const hackathons = [
   {
+    title: "@Hack 2025",
+    job: "AtHackCTF",
+    date: "2025",
+    contents: [
+      "Achieved 6th place finish out of 600+ teams at AtHackCTF 2025, after 35+ hours of non-stop hacking and problem-solving!",
+      "Tackled 30+ challenges across web exploits, crypto puzzles, forensics, hardware hacking, and steganography.",
+      "Learned persistence, collaboration, documentation, and methodical problem-solving.",
+    ],
+  },
+  {
     title: "ConUHacks IX",
     job: "Quebec's largest hackathon",
     date: "2025",
@@ -235,16 +245,6 @@ export const hackathons = [
       "Developed core game mechanics & enemy AI.",
       "Created pixel art assets.",
       "Learned about game physics, iterative design, and teamwork under pressure.",
-    ],
-  },
-  {
-    title: "@Hack 2025",
-    job: "AtHackCTF",
-    date: "2025",
-    contents: [
-      "Achieved 6th place finish out of 600+ teams at AtHackCTF 2025, after 35+ hours of non-stop hacking and problem-solving!",
-      "Tackled 30+ challenges across web exploits, crypto puzzles, forensics, hardware hacking, and steganography.",
-      "Learned persistence, collaboration, documentation, and methodical problem-solving.",
     ],
   },
 ];

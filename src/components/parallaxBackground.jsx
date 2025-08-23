@@ -12,7 +12,7 @@ const ParallaxBackground = () => {
   const mountain1Y = useTransform(x, [0, 0.5], ["0%", "0%"]);
 
   return (
-    <section className="absolute inset-0 bg-black/40">
+    <section className="absolute inset-0 -z-10 pointer-events-none bg-black/20">
       <div className="relative h-screen overflow-y-hidden">
         {/* Background Sky */}
         <div
@@ -21,6 +21,8 @@ const ParallaxBackground = () => {
             backgroundImage: "url(/assets/sky.jpg)",
             backgroundPosition: "bottom",
             backgroundSize: "cover",
+            // Apply a subtle dulling only on non-mobile
+            filter: isMobile ? undefined : "saturate(0.85) brightness(0.95)",
           }}
         />
         {/* Mountain Layer 3 */}
@@ -45,19 +47,22 @@ const ParallaxBackground = () => {
             x: planetsX,
           }}
         />
-        {/* Mountain Layer 2 (parallax) - hidden on mobile */}
+        {/* Mountain Layer 2 (parallax + gentle float) - hidden on mobile */}
         {!isMobile && (
-          <motion.div
-            className="absolute inset-0 -z-20"
-            style={{
-              backgroundImage: "url(/assets/mountain-2.png)",
-              // add a little left padding (shift 16px from the edge)
-              backgroundPosition: "20px bottom",
-              backgroundRepeat: "no-repeat",
-              backgroundSize: "96% 103%",
-              y: mountain2Y,
-            }}
-          />
+          <motion.div className="absolute inset-0 -z-20" style={{ y: mountain2Y }}>
+            <motion.div
+              className="absolute inset-0"
+              style={{
+                backgroundImage: "url(/assets/mountain-2.png)",
+                // add a little left padding (shift 16px from the edge)
+                backgroundPosition: "20px bottom",
+                backgroundRepeat: "no-repeat",
+                backgroundSize: "96% 103%",
+              }}
+              animate={{ y: [0, -12, 0] }}
+              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+            />
+          </motion.div>
         )}
         {/* Mountaine Layer 1 */}
         <motion.div

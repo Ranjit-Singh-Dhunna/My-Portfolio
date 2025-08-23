@@ -223,6 +223,32 @@ export const myProjects = [
   },
 ];
 
+// Hackathons timeline data (same structure as `experiences`)
+export const hackathons = [
+  {
+    title: "ConUHacks IX",
+    job: "Quebec's largest hackathon",
+    date: "2025",
+    contents: [
+      "ConUHacks IX unforgettable whirlwind of building, problem-solving, and teamwork in Quebec's largest hackathon.",
+      "Tackled workplace stress and ambitiously tried to create a 2D shooter game in 24 hours.",
+      "Developed core game mechanics & enemy AI.",
+      "Created pixel art assets.",
+      "Learned about game physics, iterative design, and teamwork under pressure.",
+    ],
+  },
+  {
+    title: "@Hack 2025",
+    job: "AtHackCTF",
+    date: "2025",
+    contents: [
+      "Achieved 6th place finish out of 600+ teams at AtHackCTF 2025, after 35+ hours of non-stop hacking and problem-solving!",
+      "Tackled 30+ challenges across web exploits, crypto puzzles, forensics, hardware hacking, and steganography.",
+      "Learned persistence, collaboration, documentation, and methodical problem-solving.",
+    ],
+  },
+];
+
 export const mySocials = [
   {
     name: "WhatsApp",

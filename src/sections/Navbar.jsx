@@ -41,7 +41,7 @@ const Navbar = () => {
     const onScroll = () => {
       const heroHeight = hero.offsetHeight || window.innerHeight;
       const scrolled = window.scrollY || window.pageYOffset;
-      setIsVisible(scrolled >= heroHeight * 0.5);
+      setIsVisible(scrolled >= heroHeight * 0.7);
     };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });

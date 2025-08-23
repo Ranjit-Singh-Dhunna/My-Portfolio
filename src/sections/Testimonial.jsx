@@ -1,49 +1,91 @@
-import { twMerge } from "tailwind-merge";
 import Marquee from "../components/Marquee";
-import { reviews } from "../constants";
-const firstRow = reviews.slice(0, reviews.length / 2);
-const secondRow = reviews.slice(reviews.length / 2);
 
-const ReviewCard = ({ img, name, username, body }) => {
+const iconMap = {
+  "React": "/assets/logos/react.svg",
+  "React.js": "/assets/logos/react.svg",
+  "Tailwind": "/assets/logos/tailwindcss.svg",
+  "Vite": "/assets/logos/vitejs.svg",
+};
+
+const SkillCard = ({ label }) => {
+  const icon = iconMap[label] || null;
   return (
-    <figure
-      className={twMerge(
-        "relative h-full w-64 cursor-pointer overflow-hidden rounded-xl border p-4 border-gray-50/[.1] bg-gradient-to-r bg-indigo to-storm hover:bg-royal hover-animation"
-      )}
-    >
-      <div className="flex flex-row items-center gap-2">
+    <figure className="group relative h-28 w-72 cursor-pointer overflow-hidden rounded-xl border p-6 border-gray-50/[.1] bg-gradient-to-r bg-indigo to-storm hover:bg-royal hover-animation transform-gpu transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.03] hover:rotate-[0.5deg] hover:shadow-xl hover:shadow-lavender/30 hover:border-white/20">
+      {/* Sheen effect */}
+      <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 transition-all duration-700 group-hover:opacity-100 group-hover:translate-x-full" />
+
+      {/* Optional icon */}
+      {icon && (
         <img
-          className="rounded-full bg-white/10"
-          width="32"
-          height="32"
+          src={icon}
           alt=""
-          src={img}
+          className="absolute top-3 left-3 h-5 w-5 opacity-70 transition duration-300 group-hover:opacity-100 group-hover:animate-pulse"
         />
-        <div className="flex flex-col">
-          <figcaption className="text-sm font-medium text-white">
-            {name}
-          </figcaption>
-          <p className="text-xs font-medium text-white/40">{username}</p>
-        </div>
+      )}
+
+      <div className="flex items-center justify-center w-full h-full">
+        <figcaption className="text-sm font-medium text-white text-center transition-colors duration-300 group-hover:text-white">
+          {label}
+        </figcaption>
       </div>
-      <blockquote className="mt-2 text-sm">{body}</blockquote>
     </figure>
   );
 };
 
 export default function Testimonial() {
+  const skills = [
+    "AI",
+    "React",
+    "Vite",
+    "Tailwind",
+    "Express",
+    "JSON",
+    "APIs",
+    "GitHub",
+    "Problem-Solving",
+    "Creativity",
+    "Adaptability",
+    "Collaboration",
+    "Communication",
+    "Management",
+    "Innovation",
+    "Usability",
+    "Java",
+    "JavaScript",
+    "Python",
+    "HTML",
+    "CSS",
+    "Git",
+    "Eclipse",
+    "VS Code",
+    "Cursor",
+    "PyCharm",
+    "BlueJ",
+    "MongoDB",
+    "React.js",
+    "Node.js",
+    "Express.js",
+  ];
+  const midpoint = Math.ceil(skills.length / 2);
+  const firstRow = skills.slice(0, midpoint);
+  const secondRow = skills.slice(midpoint);
+
   return (
-    <div className="">
-      <h2 className="text-heading">Hear From My Clients</h2>
+    <div id="skills" className="c-space section-spacing">
+      <h2 className="text-heading">Skills</h2>
       <div className="relative flex flex-col items-center justify-center w-full mt-12 overflow-hidden">
         <Marquee pauseOnHover className="[--duration:20s]">
-          {firstRow.map((review) => (
-            <ReviewCard key={review.username} {...review} />
+          {firstRow.map((s) => (
+            <div key={s} className="mx-2">
+              <SkillCard label={s} />
+            </div>
           ))}
         </Marquee>
         <Marquee reverse pauseOnHover className="[--duration:20s]">
-          {secondRow.map((review) => (
-            <ReviewCard key={review.username} {...review} />
+          {secondRow.map((s) => (
+            <div key={s} className="mx-2">
+              <SkillCard label={s} />
+            </div>
           ))}
         </Marquee>
         <div className="absolute inset-y-0 left-0 w-1/4 pointer-events-none bg-gradient-to-r from-primary"></div>

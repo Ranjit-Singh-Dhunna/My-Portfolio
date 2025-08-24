@@ -165,8 +165,13 @@ export default function Testimonial() {
   const secondRowMobile = mobileSkills.slice(midpointMobile);
 
   return (
-    <div id="skills" className="c-space min-h-0 mt-0 pt-8 md:pt-12 pb-0 mb-0 overflow-hidden">
-      <h2 className="text-heading">Skills</h2>
+    <div
+      id="skills"
+      className="min-h-0 mt-0 pt-8 md:pt-12 pb-0 mb-0 overflow-hidden md:w-screen md:relative md:left-1/2 md:right-1/2 md:-ml-[50vw] md:-mr-[50vw]"
+    >
+      <div className="c-space">
+        <h2 className="text-heading md:pt-[6vh] md:pb-[4vh]">Skills</h2>
+      </div>
       {/* Mobile: only items with icons, soft skills hidden */}
       <div className="md:hidden relative flex flex-col items-center justify-center w-full mt-6 overflow-hidden">
         <Marquee pauseOnHover className="[--duration:14s]">

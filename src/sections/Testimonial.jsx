@@ -26,6 +26,51 @@ const iconMap = {
   "Eclipse": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/eclipse/eclipse-original.svg",
 };
 
+// Add default glyph-style icons for soft skills (desktop display)
+iconMap["Creativity"] =
+  "data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'>\
+  <path fill='%23FBBF24' d='M12 3a7 7 0 0 0-4.95 11.95V18a2 2 0 0 0 2 2h1v-3h2v3h1a2 2 0 0 0 2-2v-3.05A7 7 0 0 0 12 3z'/>\
+</svg>";
+iconMap["Adaptability"] =
+  "data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'>\
+  <rect width='24' height='24' fill='none'/>\
+  <path fill='%232DD4BF' d='M3 12l4-4v3h10V8l4 4-4 4v-3H7v3l-4-4z'/>\
+</svg>";
+iconMap["Collaboration"] =
+  "data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'>\
+  <circle cx='8' cy='9' r='3.2' fill='%23A78BFA'/>\
+  <circle cx='16' cy='9' r='3.2' fill='%23967CF2'/>\
+  <path d='M4 20a4.5 4.5 0 0 1 4.5-4.5h7' fill='none' stroke='%23C4B5FD' stroke-width='2' stroke-linecap='round'/>\
+  <path d='M20 20a4.5 4.5 0 0 0-4.5-4.5' fill='none' stroke='%23C4B5FD' stroke-width='2' stroke-linecap='round'/>\
+</svg>";
+iconMap["Communication"] =
+  "data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'>\
+  <rect x='2' y='4' width='20' height='14' rx='3' fill='%2360A5FA'/>\
+  <path d='M8 18l-3 3' stroke='%2360A5FA' stroke-width='2' stroke-linecap='round'/>\
+</svg>";
+iconMap["Management"] =
+  "data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'>\
+  <rect x='3' y='7' width='18' height='12' rx='2' fill='%23FB923C'/>\
+  <rect x='8' y='4' width='8' height='3' rx='1.5' fill='%23FDBA74'/>\
+  <rect x='7' y='12' width='10' height='2' rx='1' fill='%23FED7AA'/>\
+</svg>";
+iconMap["Innovation"] =
+  "data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'>\
+  <path d='M12 2l5 9-5 2-5-2 5-9z' fill='%23F472B6'/>\
+  <circle cx='12' cy='8' r='1.5' fill='%23FDF2F8'/>\
+</svg>";
+iconMap["Usability"] =
+  "data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'>\
+  <path d='M6 3l10 7-6 2 2 6-6-15z' fill='%2334D399'/>\
+</svg>";
+
 // Decide card width based on label length
 const widthForLabel = (label) => {
   const len = (label || "").length;

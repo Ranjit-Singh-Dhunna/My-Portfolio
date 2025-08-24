@@ -44,28 +44,28 @@ const About = () => {
                 <div className="absolute -bottom-2 left-0 w-0 h-0.5 bg-gradient-gold transition-all duration-500 group-hover:w-full"></div>
               </h3>
               <div className="space-y-4 text-lg text-neutral-400 leading-relaxed">
-                <p className="transition-all duration-500 hover:text-white">
-                  It all started when I was just in <span className="text-lavender font-semibold">6th grade</span>. While my friends were playing video games, I was fascinated by how they were made. That curiosity led me to write my first "Hello World" program, and I've been hooked ever since.
+                <p className="transition-all duration-500 hover:text-[#E0BFD7]">
+                  It all began back in 4th grade, when I discovered the magic of <span className="text-lavender font-semibold">HTML</span> and <span className="text-lavender font-semibold">CSS</span>. By 6th grade, I was writing my first programs in <span className="text-lavender font-semibold">QBASIC</span>, and soon after, <span className="text-lavender font-semibold">Java</span> in 7th grade. That early spark grew into a passion for technology — leading me to explore <span className="text-lavender font-semibold">JavaScript</span>, <span className="text-lavender font-semibold">Python</span>, <span className="text-lavender font-semibold">React</span>, <span className="text-lavender font-semibold">Express</span>, and many more tools that now form the foundation of my journey in <span className="text-lavender font-semibold">software engineering</span>.
                 </p>
-                <p className="transition-all duration-500 hover:text-white [transition-delay:100ms]">
-                  Today, as a <span className="text-lavender font-semibold">Software Engineering student</span>, I channel that same childhood wonder into creating seamless digital experiences. From winning hackathons to building innovative projects, every line of code I write is driven by that passion.
+                <p className="transition-all duration-500 hover:text-[#E0BFD7] [transition-delay:100ms]">
+                  Even in 6th grade, I practiced easy and medium-level <span className="text-lavender font-semibold">LeetCode</span>-style questions on paper, treating problem-solving like puzzles. Today, that same curiosity drives me to build seamless digital experiences — from <span className="text-lavender font-semibold">hackathons</span> to innovative projects, every line of code is fueled by passion.
                 </p>
-                <p className="transition-all duration-500 hover:text-white [transition-delay:200ms]">
-                  I believe in <span className="text-lavender font-semibold">learning by doing</span> — whether it's tackling complex algorithms on LeetCode, collaborating on GitHub projects, or pushing the boundaries in 48-hour hackathons.
+                <p className="transition-all duration-500 hover:text-[#E0BFD7] [transition-delay:200ms]">
+                  What started as curiosity has now become my drive to create technology that inspires and empowers.
                 </p>
+                {/* My Philosophy (matches left text column width) */}
+                <div className="bg-gradient-to-br from-storm to-indigo border border-white/10 rounded-xl p-6 shadow-card relative overflow-hidden group mt-8">
+                  <div className="absolute inset-0 bg-gradient-to-r from-royal/20 via-transparent to-royal/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="relative z-10">
+                    <h4 className="text-xl font-semibold text-white mb-3 group-hover:animate-glow">My Philosophy</h4>
+                    <p className="text-neutral-300 italic">
+                      "The magic of software lies not in syntax, but in its ability to simplify and elevate everyday life."
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
 
-            {/* Philosophy */}
-            <div className="bg-gradient-to-br from-storm to-indigo border border-white/10 rounded-xl p-6 shadow-card relative overflow-hidden group">
-              <div className="absolute inset-0 bg-gradient-to-r from-royal/20 via-transparent to-royal/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              <div className="relative z-10">
-                <h4 className="text-xl font-semibold text-white mb-3 group-hover:animate-glow">My Philosophy</h4>
-                <p className="text-neutral-300 italic">
-                  "Great software isn't just about perfect code — it's about creating experiences that make people's lives better, one pixel at a time."
-                </p>
-              </div>
-            </div>
           </div>
 
           {/* Right Content - Stats & Focus */}
@@ -136,15 +136,17 @@ const About = () => {
 
             {/* Current Focus removed per request */}
 
-            {/* Fun Fact */}
-            <div className="bg-gradient-to-br from-primary via-indigo to-primary border border-white/10 rounded-xl p-6 relative overflow-hidden group">
-              <div className="absolute inset-0 bg-gradient-glow opacity-30"></div>
-              <div className="absolute inset-0 bg-gradient-to-r from-royal/10 via-lavender/20 to-royal/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              <div className="relative z-10">
-                <h4 className="text-xl font-semibold text-white mb-3 group-hover:animate-glow">🎮 Fun Fact</h4>
-                <p className="text-white">
-                  When I'm not coding, you'll find me exploring pixel art, gaming, or experimenting with new tech trends. I believe creativity in one area fuels innovation in another!
-                </p>
+            {/* Fun Fact (spans both right-column tiles) */}
+            <div className="grid grid-cols-2 gap-6">
+              <div className="col-span-2 bg-gradient-to-br from-primary via-indigo to-primary border border-white/10 rounded-xl p-6 relative overflow-hidden group h-[111%]">
+                <div className="absolute inset-0 bg-gradient-glow opacity-30"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-royal/10 via-lavender/20 to-royal/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="relative z-10">
+                  <h4 className="text-3xl font-semibold text-neutral-400 mb-3 group-hover:animate-glow pt-[1vh]">🎮 Fun Fact</h4>
+                  <p className="text-neutral-400 text-lg leading-relaxed">
+                    As a young learner, I would open Notepad, write simple static pages, and rename the file from .txt to .html just to see them come alive in a browser.
+                  </p>
+                </div>
               </div>
             </div>
           </div>

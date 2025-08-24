@@ -72,7 +72,7 @@ body {
 }
 
 .section-spacing {
-  @apply min-h-screen mt-20 md:mt-30;
+  @apply pt-16 md:pt-24 pb-0;
 }
 
 .text-heading {
@@ -426,13 +426,102 @@ spline-viewer svg[width="89"][height="13"] {
   .projects-carousel.showDetail .list .item:nth-child(2) .detail .title { font-size: 1.5rem; }
 }
 @media (max-width: 767px) {
+  /* Stack image above text vertically on mobile, but keep horizontal swipe */
   .projects-carousel { height: 80vh; }
-  .projects-carousel .list .item { width: 100%; font-size: 10px; }
-  .projects-carousel .list { height: 100%; }
-  .projects-carousel .list .item:nth-child(2) .introduce { width: 50%; }
-  .projects-carousel .list .item img { width: 44%; }
-  .projects-carousel.showDetail .list .item:nth-child(2) .detail { backdrop-filter: blur(10px); font-size: small; }
+  /* Do NOT override .list positioning/transform logic so swipe still works */
+
+  .projects-carousel .list .item { width: 100%; font-size: 10px; height: auto; }
+
+  /* Inner layout: image on top, text below */
+  .projects-carousel .list .item img {
+    position: static;
+    width: 100%;
+    height: auto;
+    right: auto; top: auto;
+    transform: none;
+    margin-bottom: 12px;
+  }
+  /* Increase specificity for the active (2nd) item to beat desktop rules */
+  .projects-carousel .list .item:nth-child(2) img {
+    position: static;
+    width: 100%;
+    height: auto;
+    right: auto; top: auto;
+    transform: none;
+    margin-bottom: 12px;
+  }
+  .projects-carousel .list .item .introduce {
+    position: static;
+    width: 100%;
+    top: auto;
+    transform: none;
+    opacity: 1; pointer-events: auto;
+  }
+  .projects-carousel .list .item:nth-child(2) .introduce {
+    position: static;
+    width: 100%;
+    top: auto;
+    transform: none;
+    opacity: 1; pointer-events: auto;
+  }
+
+  /* Detail view stacked as well */
+  .projects-carousel.showDetail .list .item:nth-child(2) img { right: auto; }
+  .projects-carousel.showDetail .list .item:nth-child(2) .detail {
+    position: static; width: 100%; right: auto; top: auto; transform: none; text-align: left; opacity: 1;
+  }
+  .projects-carousel.showDetail .list .item:nth-child(2) .detail .checkout { float: none; justify-content: flex-start; }
+
+  .projects-carousel .list .item:nth-child(2) .introduce .title,
+  .projects-carousel .list .item:nth-child(2) .introduce .topic,
   .projects-carousel .list .item:nth-child(2) .introduce .des,
   .projects-carousel.showDetail .list .item:nth-child(2) .detail .des { height: 100px; overflow: auto; }
   .projects-carousel.showDetail .list .item:nth-child(2) .detail .checkout { display: flex; width: max-content; float: right; }
+}
+
+/* Utilities: Animations and Gradients for About/Contact/Footer */
+.animate-fade-in {
+  animation: fade-in 0.8s ease both;
+}
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 0.8s ease both;
+}
+@keyframes slide-in-right {
+  from { opacity: 0; transform: translateX(10px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.animate-glow {
+  animation: glow 1.6s ease-in-out infinite alternate;
+}
+@keyframes glow {
+  from { text-shadow: 0 0 0px rgba(122,87,219,0.0), 0 0 0px rgba(92,51,204,0.0); }
+  to { text-shadow: 0 0 8px rgba(122,87,219,0.35), 0 0 16px rgba(92,51,204,0.25); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.bg-gradient-gold {
+  background: linear-gradient(90deg, var(--color-sand), var(--color-orange));
+}
+.shadow-gold {
+  box-shadow: 0 10px 30px rgba(214,153,92,0.25), 0 0 0 1px rgba(214,153,92,0.15) inset;
+}
+
+.bg-gradient-glow {
+  background-image:
+    radial-gradient(60% 60% at 20% 30%, var(--color-coral), transparent),
+    radial-gradient(60% 60% at 80% 70%, var(--color-royal), transparent),
+    radial-gradient(50% 50% at 50% 50%, var(--color-aqua), transparent);
 }

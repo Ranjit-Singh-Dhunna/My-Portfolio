@@ -4,18 +4,11 @@ import { hackathons } from "../constants";
 
 const Hackathons = () => {
   return (
-    <section className="c-space mt-20 md:mt-30 md:w-screen md:relative md:left-1/2 md:right-1/2 md:-ml-[50vw] md:-mr-[50vw] md:px-6">
+    <section id="hackathons" className="py-0 md:py-0 px-0 md:px-0 md:w-screen md:relative md:left-1/2 md:right-1/2 md:-ml-[50vw] md:-mr-[50vw] scroll-mt-24 md:scroll-mt-28">
       <Timeline
         data={hackathons}
         title="Hackathons"
         footerText="more coming soon..."
-        titleClassName="text-left"
-        containerClassName=""
-        contentClassName="c-space relative"
-        firstItemTopPaddingClass="pt-6 md:pt-32"
-        itemTopPaddingClass="pt-10 md:pt-40"
-        footerRevealStart={0.4}
-        lineEndOffset={6}
       />
     </section>
   );

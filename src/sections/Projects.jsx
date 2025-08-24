@@ -210,7 +210,7 @@ const Projects = () => {
   return (
     <section
       id="projects"
-      className="c-space mt-20 md:mt-30 md:w-screen md:relative md:left-1/2 md:right-1/2 md:-ml-[50vw] md:-mr-[50vw] md:px-6"
+      className="c-space section-spacing md:w-screen md:relative md:left-1/2 md:right-1/2 md:-ml-[50vw] md:-mr-[50vw] md:px-6 scroll-mt-24 md:scroll-mt-28 pb-[5vh] md:pb-[5vh]"
     >
       <h2 className="text-heading">Projects</h2>
       <p className="subtext mt-2">Swipe through a few highlights.</p>
@@ -230,7 +230,15 @@ const Projects = () => {
                 <div className="title">SHOWCASE</div>
                 <div className="topic">{p.title}</div>
                 <div className="des">{p.des}</div>
-                <button className="seeMore" onClick={onShow}>
+                {p.code && (
+                  <button
+                    className="seeMore md:hidden mt-2"
+                    onClick={() => window.open(p.code, "_blank")}
+                  >
+                    VIEW CODE ↗
+                  </button>
+                )}
+                <button className="seeMore hidden md:inline-block" onClick={onShow}>
                   SEE MORE ↗
                 </button>
               </div>

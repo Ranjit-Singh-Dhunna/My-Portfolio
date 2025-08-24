@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { motion } from "motion/react";
 
-function Navigation({ active, setActive }) {
+function Navigation({ active, onNavigate }) {
   const items = [
-    { id: "home", label: "Home" },
     { id: "about", label: "About" },
-    { id: "work", label: "Work" },
+    { id: "projects", label: "Projects" },
+    { id: "hackathons", label: "Hackathons" },
     { id: "contact", label: "Contact" },
   ];
   return (
@@ -16,7 +16,10 @@ function Navigation({ active, setActive }) {
             href={`#${item.id}`}
             data-current={active === item.id}
             className={`nav-link ${active === item.id ? "nav-link-active" : ""}`}
-            onClick={() => setActive(item.id)}
+            onClick={(e) => {
+              e.preventDefault();
+              onNavigate?.(item.id);
+            }}
           >
             {item.label}
           </a>
@@ -30,6 +33,32 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [active, setActive] = useState("home");
   const [isVisible, setIsVisible] = useState(false);
+
+  // Slow smooth scroll with easing
+  const animateScrollTo = (to, duration = 1200) => {
+    const start = window.pageYOffset;
+    const change = to - start;
+    const startTime = performance.now();
+    const easeInOutCubic = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
+    const step = (now) => {
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = easeInOutCubic(progress);
+      window.scrollTo(0, start + change * eased);
+      if (progress < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  };
+
+  const navigateTo = (id) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    // account for scroll-margin already set on sections; scroll to element's top offset
+    const targetY = Math.max(0, el.getBoundingClientRect().top + window.pageYOffset);
+    setActive(id);
+    setIsOpen(false);
+    animateScrollTo(targetY, 1200);
+  };
 
   useEffect(() => {
     const hero = document.getElementById("home");
@@ -57,9 +86,13 @@ const Navbar = () => {
       <div className="header-inner">
         <div className="header-bar">
           <a
-            href="/"
+            href="#home"
             className="brand"
-            aria-label="Homepage"
+            aria-label="Go to hero"
+            onClick={(e) => {
+              e.preventDefault();
+              navigateTo("home");
+            }}
           >
             Ranjit
           </a>
@@ -79,7 +112,7 @@ const Navbar = () => {
           </button>
 
           <nav id="primary-navigation" className="hidden sm:flex">
-            <Navigation active={active} setActive={setActive} />
+            <Navigation active={active} onNavigate={navigateTo} />
           </nav>
         </div>
       </div>
@@ -92,7 +125,7 @@ const Navbar = () => {
         aria-hidden={!isOpen}
       >
         <div className="pb-4 pt-2 c-space">
-          <Navigation active={active} setActive={setActive} />
+          <Navigation active={active} onNavigate={navigateTo} />
         </div>
       </motion.nav>
     </header>

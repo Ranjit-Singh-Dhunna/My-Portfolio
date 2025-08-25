@@ -1,5 +1,8 @@
 # 🌐 Portfolio Website
 
+## 🔗 Live Portfolio  
+👉 [**Visit My Portfolio**](https://ranjitsinghdhunna.dev/)
+
 A modern, interactive portfolio built with **React 19 + Vite 6**, featuring **3D Spline integration, motion effects, parallax, and a modular section-based architecture**.  
 
 ---

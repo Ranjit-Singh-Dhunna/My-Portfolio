@@ -56,7 +56,7 @@ Features: Chronological accomplishments in a clean timeline UI.
 **File:** `src/sections/Contact.jsx`  
 - Integrated with [EmailJS](https://www.emailjs.com/) via `@emailjs/browser`  
 
-### 🦶 Footer & Branding
+### Footer & Branding
 **Files:**  
 - `src/sections/Footer.jsx`  
 - `index.html`  
